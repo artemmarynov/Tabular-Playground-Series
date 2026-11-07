@@ -8,7 +8,9 @@ The Kaggle challenge is an **unsupervised clustering problem**: observations bel
 
 **Primary environment:** RapidMiner Studio. Python may be used for additional analyses, visualizations, or experiments when necessary. All processes and source files used in the final work must be submitted.
 
-**Project status:** Initial dataset inspection completed; modeling and parameter optimization have not yet been completed. No final clustering results or performance scores are claimed in this README.
+**Project status:** Data-understanding and preparation processes plus six recorded K-Means results (`k = 2, 3, 4, 5, 8, 12`) are available under `RapidMiner/`. The smallest recorded Davies–Bouldin index is **3.923 at k = 12**; this is a provisional result, not a validated optimal number of clusters. Stability analysis, further tuning, and comparison with other methods remain pending. See the [results review](RapidMiner/analysis.md) and [experiment table](RapidMiner/kmeans_metrics.csv).
+
+**K-Means experiment settings:** `local_random_seed = 1234`, `max_optimization_steps = 300`, and `max_runs = 10`.
 
 ## 2. Dataset
 
@@ -197,7 +199,3 @@ When assisting with this repository:
 - [Kaggle — Tabular Playground Series, July 2022 (competition)](https://www.kaggle.com/competitions/tabular-playground-series-jul-2022)
 - [Kaggle — Dataset files](https://www.kaggle.com/competitions/tabular-playground-series-jul-2022/data)
 - CRISP-DM methodology (Business Understanding, Data Understanding, Data Preparation, Modeling, Evaluation, Deployment)
-
----
-
-**Current next step:** complete and document the **Data Understanding** phase in RapidMiner before treating any clustering results as final.

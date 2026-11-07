@@ -1,0 +1,106 @@
+<?xml version="1.0" encoding="UTF-8"?><process version="12.1.001">
+  <context>
+    <input/>
+    <output/>
+    <macros/>
+  </context>
+  <operator activated="true" class="process" compatibility="12.1.001" expanded="true" name="Process">
+    <parameter key="logverbosity" value="init"/>
+    <parameter key="random_seed" value="2001"/>
+    <parameter key="send_mail" value="never"/>
+    <parameter key="notification_email" value=""/>
+    <parameter key="process_duration_for_mail" value="30"/>
+    <parameter key="encoding" value="SYSTEM"/>
+    <process expanded="true">
+      <operator activated="true" class="read_csv" compatibility="12.1.001" expanded="true" height="68" name="Read CSV" width="90" x="45" y="34">
+        <parameter key="csv_file" value="C:\Users\admin\Downloads\data.csv"/>
+        <parameter key="column_separators" value=","/>
+        <parameter key="trim_lines" value="false"/>
+        <parameter key="multiline_text" value="false"/>
+        <parameter key="use_quotes" value="true"/>
+        <parameter key="quotes_character" value="&quot;"/>
+        <parameter key="escape_character" value="\"/>
+        <parameter key="skip_comments" value="true"/>
+        <parameter key="comment_characters" value="#"/>
+        <parameter key="starting_row" value="1"/>
+        <parameter key="parse_numbers" value="true"/>
+        <parameter key="decimal_character" value="."/>
+        <parameter key="grouped_digits" value="false"/>
+        <parameter key="grouping_character" value=","/>
+        <parameter key="infinity_representation" value=""/>
+        <parameter key="date_format" value=""/>
+        <parameter key="use_header_row" value="true"/>
+        <parameter key="header_row" value="1"/>
+        <parameter key="first_row_as_names" value="true"/>
+        <list key="annotations"/>
+        <parameter key="time_zone" value="Europe/Bratislava"/>
+        <parameter key="locale" value="English (United States)"/>
+        <parameter key="encoding" value="windows-1252"/>
+        <parameter key="read_all_values_as_polynominal" value="false"/>
+        <list key="data_set_meta_data_information">
+          <parameter key="0" value="id.true.integer.attribute"/>
+          <parameter key="1" value="f_00.true.real.attribute"/>
+          <parameter key="2" value="f_01.true.real.attribute"/>
+          <parameter key="3" value="f_02.true.real.attribute"/>
+          <parameter key="4" value="f_03.true.real.attribute"/>
+          <parameter key="5" value="f_04.true.real.attribute"/>
+          <parameter key="6" value="f_05.true.real.attribute"/>
+          <parameter key="7" value="f_06.true.real.attribute"/>
+          <parameter key="8" value="f_07.true.integer.attribute"/>
+          <parameter key="9" value="f_08.true.integer.attribute"/>
+          <parameter key="10" value="f_09.true.integer.attribute"/>
+          <parameter key="11" value="f_10.true.integer.attribute"/>
+          <parameter key="12" value="f_11.true.integer.attribute"/>
+          <parameter key="13" value="f_12.true.integer.attribute"/>
+          <parameter key="14" value="f_13.true.integer.attribute"/>
+          <parameter key="15" value="f_14.true.real.attribute"/>
+          <parameter key="16" value="f_15.true.real.attribute"/>
+          <parameter key="17" value="f_16.true.real.attribute"/>
+          <parameter key="18" value="f_17.true.real.attribute"/>
+          <parameter key="19" value="f_18.true.real.attribute"/>
+          <parameter key="20" value="f_19.true.real.attribute"/>
+          <parameter key="21" value="f_20.true.real.attribute"/>
+          <parameter key="22" value="f_21.true.real.attribute"/>
+          <parameter key="23" value="f_22.true.real.attribute"/>
+          <parameter key="24" value="f_23.true.real.attribute"/>
+          <parameter key="25" value="f_24.true.real.attribute"/>
+          <parameter key="26" value="f_25.true.real.attribute"/>
+          <parameter key="27" value="f_26.true.real.attribute"/>
+          <parameter key="28" value="f_27.true.real.attribute"/>
+          <parameter key="29" value="f_28.true.real.attribute"/>
+        </list>
+        <parameter key="read_not_matching_values_as_missings" value="false"/>
+      </operator>
+      <operator activated="true" class="blending:set_role" compatibility="12.1.001" expanded="true" height="82" name="Set Role" width="90" x="179" y="34">
+        <list key="set_roles">
+          <parameter key="id" value="id"/>
+        </list>
+      </operator>
+      <operator activated="true" class="normalize" compatibility="12.1.001" expanded="true" height="103" name="Normalize" width="90" x="313" y="34">
+        <parameter key="return_preprocessing_model" value="false"/>
+        <parameter key="attribute_filter_type" value="subset"/>
+        <parameter key="attribute" value=""/>
+        <parameter key="attributes" value="f_00|f_01|f_02|f_03|f_04|f_05|f_06|f_07|f_08|f_09|f_10|f_11|f_12|f_13|f_14|f_15|f_16|f_17|f_18|f_19|f_20|f_21|f_22|f_23|f_24|f_25|f_26|f_27|f_28"/>
+        <parameter key="use_except_expression" value="false"/>
+        <parameter key="value_type" value="numeric"/>
+        <parameter key="use_value_type_exception" value="false"/>
+        <parameter key="except_value_type" value="real"/>
+        <parameter key="block_type" value="value_series"/>
+        <parameter key="use_block_type_exception" value="false"/>
+        <parameter key="except_block_type" value="value_series_end"/>
+        <parameter key="invert_selection" value="false"/>
+        <parameter key="include_special_attributes" value="false"/>
+        <parameter key="method" value="Z-transformation"/>
+        <parameter key="min" value="0.0"/>
+        <parameter key="max" value="1.0"/>
+        <parameter key="allow_negative_values" value="false"/>
+      </operator>
+      <connect from_op="Read CSV" from_port="output" to_op="Set Role" to_port="example set input"/>
+      <connect from_op="Set Role" from_port="example set output" to_op="Normalize" to_port="example set input"/>
+      <connect from_op="Normalize" from_port="example set output" to_port="result 1"/>
+      <portSpacing port="source_input 1" spacing="0"/>
+      <portSpacing port="sink_result 1" spacing="0"/>
+      <portSpacing port="sink_result 2" spacing="0"/>
+    </process>
+  </operator>
+</process>
